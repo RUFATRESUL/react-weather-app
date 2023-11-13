@@ -4,7 +4,7 @@ import axios from 'axios';
 function App() {
   const [data, setData] = useState({})
   const [location, setLocation] = useState('')
-  const url =`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=83266f29cc8211e272bafa8f10cc614d`
+  const url =`https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=83266f29cc8211e272bafa8f10cc614d`
   const searchLocation = (event) =>{
     if(event.key === 'Enter'){
 
@@ -30,7 +30,7 @@ function App() {
           
         </div>
         <div className="temprature">
-          {data.main ? <h1>{data.main.temp}°C</h1> : null}
+          {data.main ? <h1>{data.main.temp.toFixed(0)}°C</h1> : null}
           
         </div>
         <div className="description">
@@ -40,7 +40,7 @@ function App() {
       </div>
       <div className="bottom">
         <div className="feels">
-          {data.main ?  <p className="bold">{data.main.feels_like}°C</p> : null}
+          {data.main ?  <p className="bold">{data.main.feels_like.toFixed(0)}°C</p> : null}
           <p>Feels Like</p>
         </div>
         <div className="humidity">
